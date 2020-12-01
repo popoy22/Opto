@@ -1,0 +1,255 @@
+<p-card>
+    <p-steps [model]="items" [readonly]="true" [activeIndex]="step"></p-steps>
+</p-card>
+<br />
+
+<p-card *ngIf="step == 0">
+    <ng-template pTemplate="title"> Application On Boarding</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content">
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label
+                    for="divisionCustodian"
+                    class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Division Custodian(L2)</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown
+                        [options]="divisions"
+                        [(ngModel)]="selectedDivision"
+                        [filter]="true"
+                    ></p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Application Custodian Team(L3)</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown
+                        [options]="teams"
+                        [(ngModel)]="selectedTeam"
+                        [filter]="true"
+                    ></p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Application</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown
+                        [options]="applications"
+                        [(ngModel)]="selectedApplication"
+                        [filter]="true"
+                    ></p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Application Module</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <input type="text" pInputText />
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Email Notifications</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-multiSelect
+                        [options]="notifications"
+                        [(ngModel)]="selectedNotifications"
+                        display="chip"
+                        defaultLabel="-- Select Email Notifications --"
+                        optionLabel="name"
+                    ></p-multiSelect>
+                </div>
+            </div>
+
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Country</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-dropdown
+                        [options]="countries"
+                        [(ngModel)]="selectedCountry"
+                        [filter]="true"
+                    ></p-dropdown>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Bit Bucket Repository URL</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <input type="text" pInputText />
+                    <small
+                        >Example:
+                        https://bitbucket.org/atlassianlabs/maven-project-example/src</small
+                    >
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >Application JIRA Project Kye</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <input type="text" pInputText />
+                    <small
+                        >This JIRA project will be used to created a ticket for
+                        sonar failures</small
+                    >
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+                [disabled]="
+                    selectedDivision == '' ||
+                    selectedApplication == '' ||
+                    selectedTeam == '' ||
+                    selectedCountry == '' ||
+                    selectedNotifications.length == 0
+                "
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 1">
+    <ng-template pTemplate="title"> Build</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 2">
+    <ng-template pTemplate="title"> Build</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 3">
+    <ng-template pTemplate="title"> SIT Deployment</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 4">
+    <ng-template pTemplate="title"> Aldon CheckIn</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 5">
+    <ng-template pTemplate="title"> TOSCA Pipeline</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 6">
+    <ng-template pTemplate="title"> Vera Code CheckIn</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 7">
+    <ng-template pTemplate="title"> Hash Report Pipeline</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-card *ngIf="step == 8">
+    <ng-template pTemplate="title"> Review & Generate</ng-template>
+    <ng-template pTemplate="subtitle"> Enter Details here </ng-template>
+    <ng-template pTemplate="content"> </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+                label="Next"
+                (onClick)="nextPage()"
+                icon="pi pi-angle-right"
+                iconPos="right"
+            ></p-button>
+        </div>
+    </ng-template>
+</p-card>

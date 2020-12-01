@@ -1,23 +1,33 @@
-import {Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-    selector: 'app-menu',
+    selector: "app-menu",
     template: `
         <div class="menu">
             <ul class="layout-menu">
-                <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true"></li>
+                <li
+                    app-menuitem
+                    *ngFor="let item of model; let i = index"
+                    [item]="item"
+                    [index]="i"
+                    [root]="true"
+                ></li>
             </ul>
         </div>
-    `
+    `,
 })
 export class AppMenuComponent implements OnInit {
-
     model: any[];
 
     ngOnInit() {
         this.model = [
-            {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
             {
+                label: "Application On Boarding",
+                icon: "pi pi-fw pi-home",
+                routerLink: ["/"],
+            },
+
+            /*{
                 label: 'UI Kit', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'], badge: 2,
                 items: [
                     {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout']},
@@ -113,7 +123,7 @@ export class AppMenuComponent implements OnInit {
             },
             {
                 label: 'Documentation', icon: 'pi pi-fw pi-info-circle', routerLink: ['/documentation']
-            }
+            } */
         ];
     }
 }

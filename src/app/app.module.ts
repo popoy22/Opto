@@ -123,6 +123,7 @@ import {NodeService} from './demo/service/nodeservice';
 import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {MenuService} from './app.menu.service';
+import { RegistrationComponent } from './opto/pages/registration/registration.component';
 
 @NgModule({
     imports: [
@@ -241,6 +242,7 @@ import {MenuService} from './app.menu.service';
         AppNotfoundComponent,
         AppErrorComponent,
         AppAccessdeniedComponent,
+        RegistrationComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
