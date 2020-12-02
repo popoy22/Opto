@@ -37,6 +37,7 @@ import { AppInvoiceComponent } from "./pages/app.invoice.component";
 import { AppHelpComponent } from "./pages/app.help.component";
 import { FloatLabelDemoComponent } from "./demo/view/floatlabeldemo.component";
 import { RegistrationComponent } from "./opto/pages/registration/registration.component";
+import { SettingsComponent } from "./opto/pages/settings/settings.component";
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import { RegistrationComponent } from "./opto/pages/registration/registration.co
                     component: AppMainComponent,
                     children: [
                         { path: "", component: RegistrationComponent },
+                        { path: "settings", component: SettingsComponent },
                         /* {path: '', component: DashboardDemoComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},

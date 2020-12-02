@@ -1,3 +1,64 @@
+<!-- POPUP -->
+
+<p-dialog
+    [(visible)]="productDialog"
+    [style]="{ width: '450px' }"
+    header="Product Details"
+    [modal]="true"
+    styleClass="p-fluid"
+>
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="code">Code</label>
+            <input
+                type="text"
+                pInputText
+                id="code"
+                [(ngModel)]="product.code"
+                required
+                autofocus
+            />
+            <small class="p-invalid" *ngIf="submitted && !product.name"
+                >Name is required.</small
+            >
+        </div>
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input
+                type="text"
+                pInputText
+                id="name"
+                [(ngModel)]="product.name"
+                required
+                autofocus
+            />
+            <small class="p-invalid" *ngIf="submitted && !product.name"
+                >Name is required.</small
+            >
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button
+            pButton
+            pRipple
+            label="Cancel"
+            icon="pi pi-times"
+            class="p-button-text"
+            (click)="hideDialog()"
+        ></button>
+        <button
+            pButton
+            pRipple
+            label="Add"
+            icon="pi pi-check"
+            class="p-button-text"
+            (click)="saveProduct()"
+        ></button>
+    </ng-template>
+</p-dialog>
+
+<!--- BODY -->
 <p-card>
     <p-steps [model]="items" [readonly]="true" [activeIndex]="step"></p-steps>
 </p-card>
@@ -103,6 +164,46 @@
                         >This JIRA project will be used to created a ticket for
                         sonar failures</small
                     >
+                </div>
+            </div>
+
+            <div class="p-field p-grid">
+                <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >I Forgot the Label</label
+                >
+                <div class="p-col-12 p-md-10">
+                    <p-table [value]="products">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 50">
+                                    <button
+                                        pButton
+                                        pRipple
+                                        icon="pi pi-plus"
+                                        class="p-button-success p-mr-2"
+                                        (click)="openNew()"
+                                    ></button>
+                                </th>
+                                <th>Code</th>
+                                <th>Name</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td>
+                                    <button
+                                        pButton
+                                        pRipple
+                                        icon="pi pi-trash"
+                                        class="p-button-danger"
+                                        (click)="hideDialog()"
+                                    ></button>
+                                </td>
+                                <td>{{ product.code }}</td>
+                                <td>{{ product.name }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
                 </div>
             </div>
         </div>

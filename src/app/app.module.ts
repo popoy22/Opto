@@ -124,6 +124,7 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {MenuService} from './app.menu.service';
 import { RegistrationComponent } from './opto/pages/registration/registration.component';
+import { SettingsComponent } from './opto/pages/settings/settings.component';
 
 @NgModule({
     imports: [
@@ -243,6 +244,7 @@ import { RegistrationComponent } from './opto/pages/registration/registration.co
         AppErrorComponent,
         AppAccessdeniedComponent,
         RegistrationComponent,
+        SettingsComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
